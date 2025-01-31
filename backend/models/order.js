@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
 
       // Relación con el repartidor (User)
       Order.belongsTo(models.User, {
-        foreignKey: 'deliveryPersonId',  // Clave foránea que apunta al modelo User
+        foreignKey: 'deliveryPersonId',
         as: 'deliveryPerson'
       });
 
@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
 
       // Relación con la entrega (Delivery)
       Order.hasOne(models.Delivery, {
-        foreignKey: 'orderId'  // Clave foránea en Delivery
+        foreignKey: 'orderId'
       });
     }
   }
@@ -42,11 +42,11 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     clientId: {
-      type: DataTypes.UUID,  // Cambio a UUID
+      type: DataTypes.UUID,
       allowNull: false,
     },
     deliveryPersonId: {
-      type: DataTypes.UUID,  // Cambio a UUID
+      type: DataTypes.UUID,
       allowNull: false,
     },
     total: {

@@ -10,7 +10,8 @@ module.exports = {
         allowNull: false,
       },
       orderId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        allowNull: false
       },
       status: {
         type: Sequelize.STRING

@@ -65,7 +65,12 @@ module.exports = (sequelize, DataTypes) => {
     last_name: {
       type: DataTypes.STRING,
       allowNull: false,
-    }
+    },
+    status_delivery: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'User',

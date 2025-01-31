@@ -10,10 +10,12 @@ module.exports = {
         allowNull: false,
       },
       clientId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        allowNull: false
       },
       deliveryPersonId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.UUID,
+        allowNull: false
       },
       total: {
         type: Sequelize.DECIMAL
