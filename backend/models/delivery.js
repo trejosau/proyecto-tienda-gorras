@@ -27,14 +27,14 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true
     },
     orderId: {
-      type: DataTypes.UUID,  // Cambié el tipo a UUID porque `Order` tiene uuid como clave primaria
+      type: DataTypes.UUID,
       allowNull: false,
     },
     status: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    tracking_number: {
+    GPS_coordinates: {
       type: DataTypes.STRING,
       allowNull: true,
     },

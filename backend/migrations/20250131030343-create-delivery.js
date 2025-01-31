@@ -15,7 +15,7 @@ module.exports = {
       status: {
         type: Sequelize.STRING
       },
-      tracking_number: {
+      GPS_coordinates: {
         type: Sequelize.STRING
       },
       estimated_date: {
