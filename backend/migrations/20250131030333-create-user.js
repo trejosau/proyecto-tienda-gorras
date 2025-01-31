@@ -30,6 +30,11 @@ module.exports = {
       last_name: {
         type: Sequelize.STRING
       },
+      status_delivery: {
+        type: Sequelize.BOOLEAN,
+        defaultValue: false,
+        allowNull: false,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

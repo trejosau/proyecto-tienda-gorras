@@ -38,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
+
     estimated_date: {
       type: DataTypes.DATE,
       allowNull: true,

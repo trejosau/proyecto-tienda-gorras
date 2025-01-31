@@ -7,11 +7,11 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ title = "SAJ CAPS" }) => {
   return (
     <header className="w-full p-6 flex justify-between items-center border-b border-gray-700">
-      <h1 className="text-4xl font-bold tracking-wide">{title}</h1>
+     <a href="/" className="text-4xl font-bold tracking-wide">{title}</a>
       <nav>
         <ul className="flex space-x-8 text-lg">
           <li>
-            <a href="#products" className="hover:text-gray-400 transition">
+            <a href="/Productos" className="hover:text-gray-400 transition">
               Productos
             </a>
           </li>
