@@ -1,24 +1,61 @@
 import React from "react";
+import Header from "../components/Header"; 
+import { motion } from 'framer-motion';
+
 
 const HomePage: React.FC = () => {
   return (
     <div className="bg-black text-white min-h-screen flex flex-col">
-      <header className="w-full p-6 flex justify-between items-center border-b border-gray-700">
-        <h1 className="text-4xl font-bold tracking-wide">SAJ CAPS</h1>
-        <nav>
-          <ul className="flex space-x-8 text-lg">
-            <li><a href="#products" className="hover:text-gray-400 transition">Productos</a></li>
-            <li><a href="#about" className="hover:text-gray-400 transition">Nosotros</a></li>
-            <li><a href="#login" className="mt-8 px-8 py-4 bg-white text-black font-bold rounded-full shadow-lg hover:bg-gray-300 transition">Login</a></li>
-          </ul>
-        </nav>
-      </header>
+
+
+
+
+<Header />
       
-      <main className="flex-1 flex flex-col items-center justify-center text-center px-6 py-20">
-        <h2 className="text-6xl font-extrabold">Eleva tu estilo</h2>
-        <p className="mt-4 text-xl text-gray-300">Encuentra la gorra perfecta para cada ocasión.</p>
-        <a href="#products" className="mt-8 px-8 py-4 bg-white text-black font-bold rounded-full shadow-lg hover:bg-gray-300 transition">Explorar Ahora</a>
-      </main>
+<main className="flex flex-col md:flex-row items-center justify-between text-left px-6 py-20 max-w-6xl mx-auto gap-10">
+  {/* Contenido a la izquierda */}
+  <div className="md:w-1/2 text-center md:text-left space-y-6">
+    <motion.h2 
+      className="text-5xl md:text-6xl font-extrabold text-white leading-tight" 
+      initial={{ opacity: 0, x: -100 }} 
+      animate={{ opacity: 1, x: 0 }} 
+      transition={{ duration: 1 }}
+    >
+      Eleva tu estilo
+    </motion.h2>
+    <motion.p 
+      className="text-lg md:text-xl text-gray-300" 
+      initial={{ opacity: 0, x: -100 }} 
+      animate={{ opacity: 1, x: 0 }} 
+      transition={{ duration: 1, delay: 0.3 }}
+    >
+      Encuentra la gorra perfecta para cada ocasión.
+    </motion.p>
+    <motion.a 
+      href="/Productos" 
+      className="inline-block px-8 py-4 bg-white text-black font-bold rounded-full shadow-lg hover:bg-gray-300 transition duration-300 transform hover:scale-105 hover:shadow-2xl"
+      initial={{ opacity: 0, scale: 0.8 }} 
+      animate={{ opacity: 1, scale: 1 }} 
+      transition={{ duration: 1, delay: 0.6 }}
+    >
+      Explorar Ahora
+    </motion.a>
+  </div>
+
+  {/* Imagen a la derecha */}
+  <div className="md:w-1/2 flex justify-center">
+    <motion.img 
+      src="/images/gorra.png" 
+      alt="Gorra elegante" 
+      className="w-80 md:w-full max-w-md rounded-lg shadow-lg" 
+      initial={{ opacity: 0, scale: 0.9 }} 
+      animate={{ opacity: 1, scale: 1 }} 
+      transition={{ duration: 1, delay: 0.9 }}
+    />
+  </div>
+</main>
+
+
       
       <section id="products" className="w-full py-20 text-center">
         <h3 className="text-5xl font-bold mb-12">Nuestros Productos</h3>

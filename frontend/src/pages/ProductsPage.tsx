@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import Header from "../components/Header"; 
+
 
 const products = [
   { id: 1, name: "Gorra Clásica", price: "$25", image: "/images/gorra1.jpg" },
@@ -10,6 +12,8 @@ const products = [
 
 const ProductsPage: React.FC = () => {
   return (
+    <div  className="bg-black text-white min-h-screen flex flex-col">
+      <Header />
     <motion.div
       className="min-h-screen bg-black text-white p-8"
       initial={{ opacity: 0 }}
@@ -53,6 +57,7 @@ const ProductsPage: React.FC = () => {
         ))}
       </div>
     </motion.div>
+    </div>
   );
 };
 
