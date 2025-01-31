@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   Product.init({
-    uuid: {
+    id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,

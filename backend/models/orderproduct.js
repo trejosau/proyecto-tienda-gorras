@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
   }
 
   OrderProduct.init({
-    uuid: {
+    id: {
       type: DataTypes.UUID,
       defaultValue: DataTypes.UUIDV4,
       allowNull: false,
