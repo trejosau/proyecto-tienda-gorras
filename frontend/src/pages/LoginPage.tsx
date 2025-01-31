@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Header from "../components/Header"; // Ajusta la ruta según tu estructura
+import Header from "../components/Header"; 
 import { div } from "framer-motion/client";
 
 
@@ -13,8 +13,8 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <Header/>
+    <div  className="bg-black text-white min-h-screen flex flex-col">
+      <Header />
     <div className="flex items-center justify-center min-h-screen bg-black text-white">
       <div className="bg-gray-900 p-8 rounded-lg shadow-lg w-96">
         <h2 className="text-3xl font-bold text-center mb-6">Iniciar Sesión</h2>
