@@ -1,18 +1,15 @@
 import React from "react";
+import Header from "../components/Header"; // Ajusta la ruta según tu estructura
+
 
 const HomePage: React.FC = () => {
   return (
     <div className="bg-black text-white min-h-screen flex flex-col">
-      <header className="w-full p-6 flex justify-between items-center border-b border-gray-700">
-        <h1 className="text-4xl font-bold tracking-wide">SAJ CAPS</h1>
-        <nav>
-          <ul className="flex space-x-8 text-lg">
-            <li><a href="#products" className="hover:text-gray-400 transition">Productos</a></li>
-            <li><a href="#about" className="hover:text-gray-400 transition">Nosotros</a></li>
-            <li><a href="#login" className="mt-8 px-8 py-4 bg-white text-black font-bold rounded-full shadow-lg hover:bg-gray-300 transition">Login</a></li>
-          </ul>
-        </nav>
-      </header>
+
+
+
+
+<Header />
       
       <main className="flex-1 flex flex-col items-center justify-center text-center px-6 py-20">
         <h2 className="text-6xl font-extrabold">Eleva tu estilo</h2>
