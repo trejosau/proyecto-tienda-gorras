@@ -4,16 +4,16 @@ import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 
 const App: React.FC = () => {
-    return (
-        <Router>
-            <div>
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/login" element={<LoginPage />} />
-                </Routes>
-            </div>
-        </Router>
-    )
+  return (
+    <Router>
+      <div>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/login" element={<LoginPage />} />
+        </Routes>
+      </div>
+    </Router>
+  );
 };
 
 export default App;
