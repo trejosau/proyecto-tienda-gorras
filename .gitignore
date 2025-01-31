@@ -1,0 +1,22 @@
+
+# Dependencias de backend
+backend/node_modules/
+frontend/node_modules/
+
+# Archivos de configuración local
+.env
+
+# Archivos de configuración de IDEs
+.idea/
+
+# Archivos de logs
+*.log
+
+# Archivos de compilación
+dist/
+build/
+
+# Archivos específicos de TypeScript
+*.tsbuildinfo
+
+# Otras carpetas y archivos generados por el IDE o sistema operativo que no deben subirse
