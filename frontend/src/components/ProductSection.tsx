@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import api from '../services/api'; // Importa la instancia de Axios
+import api from '../services/api'; 
 
 interface Product {
   id: string;
   name: string;
   description: string;
+  image: string;
 }
 
 const ProductSection: React.FC = () => {
@@ -14,11 +15,10 @@ const ProductSection: React.FC = () => {
 
   useEffect(() => {
     api.get("product")
-    .then(response => {
-      console.log("API Response:", response.data);
-      setProducts(Array.isArray(response.data.products) ? response.data.products : []);
-    })
-  
+      .then(response => {
+        console.log("API Response:", response.data);
+        setProducts(Array.isArray(response.data.products) ? response.data.products : []);
+      })
       .catch(() => setError("Error al cargar los productos"))
       .finally(() => setLoading(false));
   }, []);
@@ -30,8 +30,9 @@ const ProductSection: React.FC = () => {
     <section id="products" className="w-full py-20 text-center">
       <h3 className="text-5xl font-bold mb-12">Nuestros Productos</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 px-6">
-        {products.map(({ id, name, description }) => (
+        {products.map(({ id, name, description, image }) => (
           <div key={id} className="bg-gray-800 text-white p-6 rounded-lg shadow-lg">
+            <img src={image} alt={name} className="w-full h-55 object-cover mb-4 rounded-lg" />
             <h4 className="text-2xl font-semibold mb-2">{name}</h4>
             <p>{description}</p>
           </div>
