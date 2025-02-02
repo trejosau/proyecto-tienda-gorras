@@ -19,4 +19,5 @@ build/
 # Archivos específicos de TypeScript
 *.tsbuildinfo
 
+config/config.json
 # Otras carpetas y archivos generados por el IDE o sistema operativo que no deben subirse
