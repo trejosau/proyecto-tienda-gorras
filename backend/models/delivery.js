@@ -30,6 +30,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID,
       allowNull: false,
     },
+    deliveryPersonId: {
+      type: DataTypes.UUID,
+      allowNull: false,
+    },
     status: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -38,11 +42,14 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.STRING,
       allowNull: true,
     },
-
     estimated_date: {
       type: DataTypes.DATE,
       allowNull: true,
     },
+    origin_GPS_coordinates: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    }
   }, {
     sequelize,
     modelName: 'Delivery',

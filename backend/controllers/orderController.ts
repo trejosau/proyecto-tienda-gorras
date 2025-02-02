@@ -4,12 +4,12 @@ const bcrypt = require('bcryptjs');
 // @ts-ignore
 import dotenv from 'dotenv';
 const jwt = require('jsonwebtoken');
-import { getAddressFromCoordinates } from "../services/iqMapsService";
+import { LocationService } from "../services/locationService";
 
 dotenv.config();
 
 export const createOrder = async (req: Request, res: Response) => {
-    const { clientId, deliveryPersonId, status, google_maps_location, products } = req.body;
+    const { clientId, deliveryPersonId_final, status, google_maps_location, products, origin_GPS_coordinates } = req.body;
 
     if (!Array.isArray(products) || products.length === 0) {
         return res.status(400).json({ message: "No hay productos en la orden" });
@@ -29,26 +29,25 @@ export const createOrder = async (req: Request, res: Response) => {
         // Crear un mapa para acceder rápidamente al precio de cada producto
         const productPriceMap = new Map(dbProducts.map(p => [p.id, p.price]));
 
-        // Calcular el total con los precios obtenidos
         const total = products.reduce((acc, product) => {
-            const price = Number(productPriceMap.get(product.productId)) || 0;
-            const quantity = Number(product.quantity) || 0;
+            const price = Number(productPriceMap.get(product.productId)) || 0; // Convertir a número y evitar undefined
+            const quantity = Number(product.quantity) || 0; // Convertir a número y evitar undefined
             return acc + (price * quantity);
         }, 0);
 
 
-        let address = "Dirección no encontrada";
-        if (google_maps_location) {
-            const [lat, lng] = google_maps_location.split(",");
-            address = await getAddressFromCoordinates(lat, lng);
-        }
+
+        const cleanLocation = google_maps_location.split(",").slice(0, 2).join(",").trim();
+
+        // Obtener la dirección desde Google Maps Service
+        const address = await LocationService.getAddressFromCoordinates(cleanLocation);
 
 
 
         // Crear la orden
         const order = await Order.create({
             clientId,
-            deliveryPersonId,
+            deliveryPersonId_final,
             total,
             status,
             address,
@@ -65,11 +64,16 @@ export const createOrder = async (req: Request, res: Response) => {
 
         await OrderProduct.bulkCreate(orderProductsData, { transaction });
 
+        const deliveryPersonId = deliveryPersonId_final;
+
         // Crear un delivery vinculado a la orden
         const delivery = await Delivery.create({
             orderId: order.id,
+            deliveryPersonId,
             status: 'pending',
-            address: address
+            address: address,
+            GPS_coordinates: origin_GPS_coordinates,
+            origin_GPS_coordinates: origin_GPS_coordinates
         }, { transaction });
 
         // Confirmar transacción

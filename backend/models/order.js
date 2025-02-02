@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.UUID,
       allowNull: false,
     },
-    deliveryPersonId: {
+    deliveryPersonId_final: {
       type: DataTypes.UUID,
       allowNull: false,
     },

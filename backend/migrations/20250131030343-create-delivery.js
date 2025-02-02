@@ -13,6 +13,10 @@ module.exports = {
         type: Sequelize.UUID,
         allowNull: false
       },
+      deliveryPersonId: {
+        type: Sequelize.UUID,
+        allowNull: false
+      },
       status: {
         type: Sequelize.STRING
       },
@@ -21,6 +25,10 @@ module.exports = {
       },
       estimated_date: {
         type: Sequelize.DATE
+      },
+      origin_GPS_coordinates: {
+        type: Sequelize.STRING,
+        allowNull: true,
       },
       createdAt: {
         allowNull: false,

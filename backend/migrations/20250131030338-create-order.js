@@ -13,7 +13,7 @@ module.exports = {
         type: Sequelize.UUID,
         allowNull: false
       },
-      deliveryPersonId: {
+      deliveryPersonId_final: {
         type: Sequelize.UUID,
         allowNull: false
       },
