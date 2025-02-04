@@ -21,12 +21,11 @@ const LoginPage: React.FC = () => {
       localStorage.setItem("userRole", role);
 
       // Redirigir según el rol
-      if (role === "admin") {
+      if (role === "admin" || role === "deliveryman") {
         window.location.href = "/dashboard";
-      } else if (role === "client") {
+      }
+      else {
         window.location.href = "/";
-      } else {
-        window.location.href = "/dashboard";
       }
     } catch (err: any) {
       setError(err.message || "Error al iniciar sesión");
@@ -68,6 +67,9 @@ const LoginPage: React.FC = () => {
               >
                 {loading ? "Iniciando sesión..." : "Iniciar Sesión"}
               </button>
+              <a href="/register" className="text-center text-gray-400 hover:text-gray-500">
+                ¿No tienes cuenta? Regístrate
+              </a>
             </form>
           </div>
         </div>
