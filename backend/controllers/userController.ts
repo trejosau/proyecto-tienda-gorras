@@ -95,9 +95,17 @@ export const login = async (req: Request, res: Response) => {
             return res.status(401).json({ message: 'Invalid email or password' });
         }
 
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string, {
-            expiresIn: '1h'
-        });
+        const token = jwt.sign(
+            {
+                id: user.id,
+                userRole: user.role
+            },
+            process.env.JWT_SECRET as string,
+            {
+                expiresIn: '1h'
+            }
+        );
+
 
         return res.status(200).json({
             message: 'Login successful',
@@ -115,6 +123,9 @@ export const login = async (req: Request, res: Response) => {
 
 export const getUser = async (req: Request, res: Response) => {
     try {
+
+        console.log(req.params, "Obteniendo usuario");
+
         const { id } = req.params;
 
         const user = await User.findByPk(id);

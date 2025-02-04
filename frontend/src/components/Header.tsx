@@ -12,6 +12,7 @@ const Header: React.FC<HeaderProps> = ({ title = "SAJ CAPS" }) => {
 
   const [username, setUsername] = useState<string>("");
 
+  // Función para obtener el usuario por su ID
   const fetchUser = async () => {
     try {
       if (userId && token) {
@@ -37,91 +38,53 @@ const Header: React.FC<HeaderProps> = ({ title = "SAJ CAPS" }) => {
   };
 
   return (
-<<<<<<< HEAD
-<header className="w-full p-6 flex justify-between items-center border-b border-gray-700">
-  <a href="/" className="text-4xl font-bold tracking-wide flex items-center space-x-4">
-    <img 
-      src="/images/SAJ CAPS.png" 
-      alt="Logo SAJ CAPS" 
-      className="h-auto w-auto max-h-12 max-w-28 object-contain"
-    />
-    <span>{title}</span>
-  </a>  
-  <nav>
-    <ul className="flex space-x-8 text-lg">
-      <li>
-        <a href="/Productos" className="hover:text-gray-400 transition">Productos</a>
-      </li>
-      <li>
-        <a href="#about" className="hover:text-gray-400 transition">Nosotros</a>
-      </li>
-      <li>
-        <a href="/login">Carrito GG papa</a>
-      </li>
-      <li>
-        <a href="/login" className="px-8 py-4 bg-white text-black font-bold rounded-full shadow-lg hover:bg-gray-300 transition">
-          Login
-        </a>
-      </li>
-    </ul>
-  </nav>
-</header>
+      <header className="w-full p-6 flex justify-between items-center border-b border-gray-700">
+        <a href="/" className="text-4xl font-bold tracking-wide">{title}</a>
 
-=======
-    <header className="w-full p-6 flex justify-between items-center border-b border-gray-700">
-      <a href="/" className="text-4xl font-bold tracking-wide flex items-center space-x-4">
-        <img 
-          src="/images/SAJ CAPS.png" 
-          alt="Logo SAJ CAPS" 
-          className="h-auto w-auto max-h-12 max-w-28 object-contain"
-        />
-        <span>{title}</span>
-      </a>  
-      <nav>
-        <ul className="flex space-x-8 text-lg items-center">
-          <li>
-            <a href="/catalogo" className="hover:text-gray-400 transition">
-              Explorar catalogos
-            </a>
-          </li>
-
-          {token ? (
-            <>
-              {role === "admin" && (
-                <li>
-                  <a href="/dashboard" className="hover:text-gray-400 transition">
-                    Panel Admin
-                  </a>
-                </li>
-              )}
-              {role === "client" && (
-                <li className="text-white font-semibold">
-                  Hola, {username || "Usuario"}
-                </li>
-              )}
-              <li>
-                <button
-                    onClick={handleLogout}
-                    className="px-6 py-2 bg-red-500 text-white font-bold rounded-full shadow-lg hover:bg-red-600 transition"
-                >
-                  Cerrar Sesión
-                </button>
-              </li>
-            </>
-          ) : (
+        <nav>
+          <ul className="flex space-x-8 text-lg items-center">
             <li>
-              <a
-                  href="/login"
-                  className="px-8 py-4 bg-white text-black font-bold rounded-full shadow-lg hover:bg-gray-300 transition"
-              >
-                Login
+              <a href="/catalogo" className="hover:text-gray-400 transition">
+                Explorar catálogos
               </a>
             </li>
-          )}
-        </ul>
-      </nav>
-    </header>
->>>>>>> 9a1bbbdb13777dc88acb5f9fa3fb31944aabe1dc
+
+            {token ? (
+                <>
+                  {role === "admin" && (
+                      <li>
+                        <a href="/dashboard" className="hover:text-gray-400 transition">
+                          Panel Admin
+                        </a>
+                      </li>
+                  )}
+                  {role === "client" && (
+                      <li className="text-white font-semibold">
+                        Hola, {username || "Usuario"}
+                      </li>
+                  )}
+                  <li>
+                    <button
+                        onClick={handleLogout}
+                        className="px-6 py-2 bg-red-500 text-white font-bold rounded-full shadow-lg hover:bg-red-600 transition"
+                    >
+                      Cerrar Sesión
+                    </button>
+                  </li>
+                </>
+            ) : (
+                <li>
+                  <a
+                      href="/login"
+                      className="px-8 py-4 bg-white text-black font-bold rounded-full shadow-lg hover:bg-gray-300 transition"
+                  >
+                    Login
+                  </a>
+                </li>
+            )}
+          </ul>
+        </nav>
+      </header>
   );
 };
 
