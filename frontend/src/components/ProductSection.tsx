@@ -27,7 +27,7 @@ const ProductSection: React.FC = () => {
 
   return (
     <section id="products" className="w-full py-20 text-center">
-      <h3 className="text-5xl font-bold mb-12">Nuestros Productos</h3>
+      <h3 className="text-5xl font-bold mb-12">Nuestros productos</h3>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 px-6">
         {products.map(({ id, name, description, image }) => (
           <div key={id} className="bg-gray-800 text-white p-6 rounded-lg shadow-lg">
