@@ -81,9 +81,9 @@ export const registerAdmin = async (req: Request, res: Response) => {
 
 export const login = async (req: Request, res: Response) => {
     try {
-        const { username, password } = req.body;
+        const { email, password } = req.body;
 
-        const user = await User.findOne({ where: { username } });
+        const user = await User.findOne({ where: { email } });
 
         if (!user) {
             return res.status(404).json({ message: 'User not found' });
@@ -92,17 +92,41 @@ export const login = async (req: Request, res: Response) => {
         const isPasswordCorrect = await bcrypt.compare(password, user.password);
 
         if (!isPasswordCorrect) {
-            return res.status(401).json({ message: 'Invalid username or password' });
+            return res.status(401).json({ message: 'Invalid email or password' });
         }
 
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET as string, {
             expiresIn: '1h'
         });
 
-        return res.status(200).json({ message: 'Login successful', token, role: user.role });
+        return res.status(200).json({
+            message: 'Login successful',
+            token,
+            role: user.role,
+            userId: user.id
+        });
+
 
     } catch (error) {
         console.error("Error logging in:", error);
         res.status(500).json({ message: 'Error logging in', error: error.message || error });
+    }
+};
+
+export const getUser = async (req: Request, res: Response) => {
+    try {
+        const { id } = req.params;
+
+        const user = await User.findByPk(id);
+
+        if (!user) {
+            return res.status(404).json({ message: 'User not found' });
+        }
+
+        return res.status(200).json(user);
+
+    } catch (error) {
+        console.error("Error getting user:", error);
+        res.status(500).json({ message: 'Error getting user', error: error.message || error });
     }
 };
