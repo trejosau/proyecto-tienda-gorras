@@ -1,10 +1,10 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import HomePage from './pages/HomePage';
-import LoginPage from './pages/LoginPage';
-import ProductsPage from './pages/ProductsPage';
-import DashboardPage from './pages/DashboardPage';
-import RegisterPage from './pages/RegisterPage';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import ProductsPage from "./pages/ProductsPage";
+import DashboardPage from "./pages/DashboardPage";
+import RegisterPage from "./pages/RegisterPage";
 
 // Componente ProtectedRoute
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -14,34 +14,26 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
         return <>{children}</>;
     }
 
-    // Si no, redirige al login.
     return <Navigate to="/login" />;
 };
 
 const App: React.FC = () => {
     return (
         <Router>
-            <div>
-                <Routes>
-                    <Route path="/" element={<HomePage />} />
-                    <Route path="/login" element={<LoginPage />} />
-                    <Route path="/catalogo" element={<ProductsPage />} />
-                    <Route path="/register" element={<RegisterPage />} />
-                </Routes>
-            </div>
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/catalogo" element={<ProductsPage />} />
                 <Route path="/productos" element={<ProductsPage />} />
+                <Route path="/register" element={<RegisterPage />} />
                 <Route
                     path="/dashboard"
                     element={
                         <ProtectedRoute>
-                            <DashboardPage role={localStorage.getItem("role") as "admin" | "deliveryman"} />
+                            <DashboardPage role={localStorage.getItem("userRole") as "admin" | "deliveryman"} />
                         </ProtectedRoute>
                     }
                 />
-                <Route path="/register" element={<RegisterPage />} />
             </Routes>
         </Router>
     );

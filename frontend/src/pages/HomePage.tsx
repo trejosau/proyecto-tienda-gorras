@@ -1,5 +1,4 @@
 import React from "react";
-import ProductSection from "../components/ProductSection";
 import Header from "../components/Header"; 
 import { motion } from 'framer-motion';
 
@@ -7,8 +6,6 @@ const HomePage: React.FC = () => {
   return (
     <div className="bg-black text-white min-h-screen flex flex-col">
       <Header />
-      
-      
 
       {/* Sección de Productos con Imagen y Animaciones */}
       <section id="products" className="w-full py-20 text-center">
