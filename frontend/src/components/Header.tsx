@@ -39,7 +39,14 @@ const Header: React.FC<HeaderProps> = ({ title = "SAJ CAPS" }) => {
 
   return (
       <header className="w-full p-6 flex justify-between items-center border-b border-gray-700">
-        <a href="/" className="text-4xl font-bold tracking-wide">{title}</a>
+  <a href="/" className="text-4xl font-bold tracking-wide flex items-center space-x-4">
+    <img 
+      src="/images/SAJ CAPS.png" 
+      alt="Logo SAJ CAPS" 
+      className="h-auto w-auto max-h-12 max-w-28 object-contain"
+    />
+    <span>{title}</span>
+  </a> 
 
         <nav>
           <ul className="flex space-x-8 text-lg items-center">
