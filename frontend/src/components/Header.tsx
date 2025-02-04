@@ -8,7 +8,7 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({ title = "SAJ CAPS" }) => {
   const token = localStorage.getItem("authToken");
   const role = localStorage.getItem("userRole");
-  const userId = localStorage.getItem("userId"); // Obtenemos el ID del usuario
+  const userId = localStorage.getItem("userId");
 
   const [username, setUsername] = useState<string>("");
 
