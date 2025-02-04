@@ -8,9 +8,8 @@ import RegisterPage from './pages/RegisterPage';
 
 // Componente ProtectedRoute
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-    const role = localStorage.getItem("role");
+    const role = localStorage.getItem("userRole");
 
-    // Verifica si el rol es 'admin' o 'deliveryman', si es así, muestra el contenido.
     if (role === "admin" || role === "deliveryman") {
         return <>{children}</>;
     }
@@ -26,7 +25,6 @@ const App: React.FC = () => {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/productos" element={<ProductsPage />} />
-                {/* Aquí protegemos la ruta de dashboard */}
                 <Route
                     path="/dashboard"
                     element={

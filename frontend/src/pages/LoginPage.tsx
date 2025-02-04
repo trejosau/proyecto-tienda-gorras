@@ -2,6 +2,17 @@ import React, { useState } from "react";
 import Header from "../components/Header";
 import { loginUser } from "../services/authService";
 
+// Función para redirigir al usuario según su rol
+const redirectUser = (role: string | null) => {
+  const routes: { [key: string]: string } = {
+    admin: "/dashboard",
+    deliveryman: "/dashboard",
+    client: "/",
+  };
+
+  window.location.href = routes[role as keyof typeof routes] || "/";
+};
+
 const LoginPage: React.FC = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -16,17 +27,12 @@ const LoginPage: React.FC = () => {
     try {
       const { token, role } = await loginUser(email, password);
 
-      // Guardar el token y el rol
+      // Guardar el token y el rol en localStorage
       localStorage.setItem("authToken", token);
       localStorage.setItem("userRole", role);
 
-      // Redirigir según el rol
-      if (role === "admin" || role === "deliveryman") {
-        window.location.href = "/dashboard";
-      }
-      else {
-        window.location.href = "/";
-      }
+      // Redirigir al usuario según su rol
+      redirectUser(role);
     } catch (err: any) {
       setError(err.message || "Error al iniciar sesión");
     } finally {
@@ -67,7 +73,7 @@ const LoginPage: React.FC = () => {
               >
                 {loading ? "Iniciando sesión..." : "Iniciar Sesión"}
               </button>
-              <a href="/register" className="text-center text-gray-400 hover:text-gray-500">
+              <a href="/register" className="text-center text-gray-400 hover:text-gray-500 mt-4">
                 ¿No tienes cuenta? Regístrate
               </a>
             </form>
