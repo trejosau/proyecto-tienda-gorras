@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Header from "../components/Header";
-import api from "../services/api";
+import axiosClient from "../services/axiosClient.ts";
 
 interface Product {
   id: string;
@@ -16,7 +16,7 @@ const ProductsPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    api.get("product")
+      axiosClient.get("product")
       .then(response => {
         console.log("API Response:", response.data);
         setProducts(response.data.products || []);
