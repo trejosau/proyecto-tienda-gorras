@@ -3,7 +3,11 @@ import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-d
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import ProductsPage from './pages/ProductsPage';
+<<<<<<< HEAD
 import DashboardPage from './pages/DashboardPage'; // Corregido el nombre
+=======
+import RegisterPage from './pages/RegisterPage';
+>>>>>>> 9a1bbbdb13777dc88acb5f9fa3fb31944aabe1dc
 
 const App: React.FC = () => {
     return (
@@ -13,6 +17,7 @@ const App: React.FC = () => {
                     <Route path="/" element={<HomePage />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/Productos" element={<ProductsPage />} />
+<<<<<<< HEAD
                     <Route
                         path="/dashboard"
                         element={
@@ -21,6 +26,9 @@ const App: React.FC = () => {
                             : <Navigate to="/login" />
                         }
                     />
+=======
+                    <Route path="/register" element={<RegisterPage />} />
+>>>>>>> 9a1bbbdb13777dc88acb5f9fa3fb31944aabe1dc
                 </Routes>
             </div>
         </Router>
