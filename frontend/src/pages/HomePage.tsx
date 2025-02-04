@@ -32,7 +32,7 @@ const HomePage: React.FC = () => {
               Encuentra la gorra perfecta para cada ocasión.
             </motion.p>
             <motion.a 
-              href="/Productos" 
+              href="/catalogo"
               className="inline-block px-8 py-4 bg-white text-black font-bold rounded-full shadow-lg hover:bg-gray-300 transition duration-300 transform hover:scale-105 hover:shadow-2xl"
               initial={{ opacity: 0, scale: 0.8 }} 
               animate={{ opacity: 1, scale: 1 }} 
