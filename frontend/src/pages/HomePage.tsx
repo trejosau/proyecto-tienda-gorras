@@ -38,7 +38,7 @@ const HomePage: React.FC = () => {
               animate={{ opacity: 1, scale: 1 }} 
               transition={{ duration: 1, delay: 0.6 }}
             >
-              Explorar Ahora
+              Explorar ahora
             </motion.a>
           </div>
 
@@ -56,8 +56,6 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Componente de productos dinámicos */}
-      <ProductSection />
 
       <footer className="w-full py-6 text-center border-t border-gray-700 text-gray-500">
         <p>&copy; 2024 SAJ CAPS. Todos los derechos reservados.</p>

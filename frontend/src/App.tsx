@@ -21,6 +21,14 @@ const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
 const App: React.FC = () => {
     return (
         <Router>
+            <div>
+                <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/catalogo" element={<ProductsPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
+                </Routes>
+            </div>
             <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/login" element={<LoginPage />} />
