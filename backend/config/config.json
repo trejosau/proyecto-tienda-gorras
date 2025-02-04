@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "871212",
+    "password": "",
     "database": "tienda_gorras",
     "host": "127.0.0.1",
     "dialect": "mysql"

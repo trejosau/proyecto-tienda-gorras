@@ -7,7 +7,7 @@ import { Server } from 'socket.io';  // Importación correcta de socket.io
 dotenv.config();
 
 // Configuración del puerto y servidor
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // Crear el servidor HTTP usando Express
 const server = http.createServer(app);
