@@ -20,15 +20,25 @@ const io = new Server(server, {
     }
 });
 
-// Establecer la conexión de WebSocket
+let estadoDisponible = true;
+
 io.on('connection', (socket) => {
     console.log("Nuevo cliente conectado");
 
-    // Aquí puedes escuchar eventos específicos del cliente
-    socket.on('send-location', (data) => {
-        console.log("Ubicación recibida:", data);
-        // Emitir la nueva ubicación a todos los clientes conectados
-        io.emit("update-location", data);
+    // Enviar el estado actual al cliente cuando se conecta
+    socket.emit('estado_actualizado', estadoDisponible);
+
+    // Escuchar solicitudes para obtener el estado actual
+    socket.on('obtener_estado_actual', () => {
+        socket.emit('estado_actualizado', estadoDisponible);
+    });
+
+    // Escuchar actualizaciones del estado desde el cliente
+    socket.on('actualizar_estado', (nuevoEstado) => {
+        estadoDisponible = nuevoEstado;
+
+        // Enviar el nuevo estado a todos los clientes conectados
+        io.emit('estado_actualizado', estadoDisponible);
     });
 
     socket.on('disconnect', () => {
