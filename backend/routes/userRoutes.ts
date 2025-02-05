@@ -4,6 +4,8 @@ import { validateTokenAndRole } from "../middlewares/authMiddleware";
 
 const router = express.Router();
 
+
+
 router.get("/:id", validateTokenAndRole(["admin", "client", "deliveryman"]), getUser);
 
 router.post('/register-client', registerClient);

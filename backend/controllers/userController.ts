@@ -141,3 +141,4 @@ export const getUser = async (req: Request, res: Response) => {
         res.status(500).json({ message: 'Error getting user', error: error.message || error });
     }
 };
+
