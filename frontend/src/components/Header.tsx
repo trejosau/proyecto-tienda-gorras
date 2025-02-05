@@ -58,13 +58,14 @@ const Header: React.FC<HeaderProps> = ({ title = "SAJ CAPS" }) => {
 
             {token ? (
                 <>
-                  {role === "admin" && (
+                  {(role === "admin" || role === "deliveryman") && (
                       <li>
                         <a href="/dashboard" className="hover:text-gray-400 transition">
-                          Panel Admin
+                          Panel
                         </a>
                       </li>
                   )}
+
                   {role === "client" && (
                       <li className="text-white font-semibold">
                         Hola, {username || "Usuario"}
